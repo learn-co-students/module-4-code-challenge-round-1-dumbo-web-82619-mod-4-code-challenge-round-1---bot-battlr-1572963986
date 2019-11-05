@@ -1,5 +1,5 @@
 import React from "react";
-import BotSpecs from "../components/BotSpecs";
+import BotCard from "../components/BotCard";
 
 class YourBotArmy extends React.Component {
   //your bot army code here...
@@ -13,7 +13,7 @@ class YourBotArmy extends React.Component {
             
             {
               this.props.bot.map(bot => {
-                return <BotSpecs bot={bot} key={bot.id}/>
+                return <BotCard bot={bot} key={bot.id}/>
               })
             }
             
