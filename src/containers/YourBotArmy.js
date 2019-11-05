@@ -6,7 +6,12 @@ class YourBotArmy extends React.Component {
   //your bot army code here...
 
   render(){
-    const myBot = this.props.myBots.map(bot => <BotCard bot={bot} handleChange={this.props.handleChange}/>)
+    const myBot = this.props.myBots.map(bot => <BotCard bot={bot} 
+                                                handleChange={this.props.handleChange}
+                                                goBack={this.props.goBack}
+                                                enroll={this.props.enroll}
+                                                
+                                                />)
     return (
       <div className="ui segment inverted olive bot-army">
         <div className="ui five column grid">

@@ -1,13 +1,15 @@
 import React from "react";
 import BotCollection from './BotCollection';
 import YourBotArmy from './YourBotArmy'
+import BotSpecs from '../components/BotSpecs'
 
 class BotsPage extends React.Component {
   //start here with your code for step one
 
   state = {
     bots: [],
-    myBots:[]
+    myBots:[],
+    botSpec: []
   }
   
   componentDidMount(){
@@ -35,12 +37,6 @@ class BotsPage extends React.Component {
       this.setState({
         myBots: newBots
       })
-      //words.filter(word => word.length > 6);
-      // console.log(newBots)
-      // this.changeStateOfMyBots(newBots)
-      // // this.setState({
-      // //   mybots: newBots 
-      // // })
     
     }
     else{
@@ -49,15 +45,38 @@ class BotsPage extends React.Component {
     })
   }
   }
-  
+
+  handleChange= (bot) => {
+    this.setState({
+      botSpec: bot
+    })
+  }
+
+  goBack =() => {
+    this.setState({
+      botSpec: []
+    })
+
+  }
+
+  enroll =(bot) => {
+    this.setState({
+      myBots: [...this.state.myBots, bot]
+    })
+  }
   
   render(){
-      return (
+
+    return(
         <div>
-          <YourBotArmy myBots={this.state.myBots} handleChange={this.handleChange}/>
+          <BotSpecs bot={this.state.botSpec} handleChange={this.handleChange}
+                                                goBack={this.goBack}
+                                                enroll={this.enroll}/>
+          <YourBotArmy bot={this.state.botSpec} myBots={this.state.myBots} handleChange={this.handleChange}/>
           <BotCollection bots={this.state.bots} handleChange={this.handleChange}/>
         </div>
-      );
+    )
+      ;
     }
   }
 
