@@ -1,11 +1,13 @@
 import React from "react";
 import BotCollection from './BotCollection';
 import YourBotArmy from './YourBotArmy'
+import BotSpecs from '../components/BotSpecs'
 
 class BotsPage extends React.Component {
   state = {
     bots: [],
-    myArmy: []
+    myArmy: [],
+    currentBot: {}
   }
 
   componentDidMount() {
@@ -17,6 +19,22 @@ class BotsPage extends React.Component {
       })
     })
   }
+
+  seeCurrentBot = (bot) => {
+    this.setState({
+      currentBot: bot
+    })
+  } 
+
+  getRidBot = () => 
+  this.setState({
+    currentBot: {}
+  })
+
+  addToArmy = (bot) =>
+  this.setState({
+    myArmy: [...this.state.myArmy, bot]
+  })
 
   handleBotClick = (bot) => {
   this.setState({
@@ -32,11 +50,13 @@ class BotsPage extends React.Component {
     })
   }
 
+
   render() {
     return (
       <div>
         <YourBotArmy myArmy={this.state.myArmy} handleRemoveClick={this.handleRemoveClick}/>
-        <BotCollection bots={this.state.bots} handleBotClick={this.handleBotClick}/>
+        <BotCollection bots={this.state.bots} addToArmy={this.addToArmy} seeBot={this.seeCurrentBot} />
+        {/* <BotSpecs goBack={this.getRidBot} enlist={this.addToArmy} currentBot={this.state.currentBot}/> */}
 
       </div>
     )
