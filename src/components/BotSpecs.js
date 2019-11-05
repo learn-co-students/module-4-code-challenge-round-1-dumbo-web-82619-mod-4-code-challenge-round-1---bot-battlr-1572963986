@@ -1,8 +1,8 @@
 import React from "react";
 
 const BotSpecs = props => {
-  let { bot } = props;
-
+  let  bot  = props['0'];
+  console.log(bot)
   let botType;
 
   switch (bot.bot_class) {
