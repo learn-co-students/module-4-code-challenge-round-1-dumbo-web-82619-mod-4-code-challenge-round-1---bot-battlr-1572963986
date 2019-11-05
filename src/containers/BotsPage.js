@@ -20,13 +20,24 @@ class BotsPage extends React.Component {
 
   addBot = (bot) => {
     // console.log("adding to bot army" , bot) 
+    //if array in bot army includes bot, return null, else add it to the array
+ 
+    let botArmyArray = this.state.botArmy 
+  
+    if (botArmyArray.includes(bot)){ 
+      null
+    } else {
     this.setState({
       botArmy: [...this.state.botArmy, bot]
-    })
+    })}
   }
 
- 
-  
+  //CLICKING ON THE BOT in Army Removes the Bot, INSTEAD it loops and try to add it again
+  removeBot = (bot) => {
+    // this.setState({
+    //   botArmy: [...this.state.BotArmy]
+    // })
+  }
 
   render() {
     // console.log("Hi", this)
@@ -34,7 +45,7 @@ class BotsPage extends React.Component {
     return (
       <div>
         <YourBotArmy botArmy={this.state.botArmy}/>
-        <BotCollection bots={this.state.bots} addBot={this.addBot} />
+        <BotCollection bots={this.state.bots} addBot={this.addBot} removeBot={this.removeBot}/>
         
         {/* put your components here */}
       </div>

@@ -11,8 +11,9 @@ class YourBotArmy extends React.Component {
         <div className="ui five column grid">
           <div className="row bot-army-row">
             {this.props.botArmy.map((bot) => {
-              console.log("BOT CARD IN BOT ARMY" , bot)
+              // console.log("BOT CARD IN BOT ARMY" , bot)
               return <BotCard bot={bot}
+                              removeBot={this.props.removeBot}
                               
               />
             }
