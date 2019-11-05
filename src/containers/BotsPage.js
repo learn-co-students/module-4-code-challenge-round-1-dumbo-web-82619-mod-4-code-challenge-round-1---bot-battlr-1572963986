@@ -10,7 +10,8 @@ class BotsPage extends React.Component {
     bots: [], 
     bot: [], 
     searchValue: '',
-    sortValue:''
+    sortValue:'',
+    switch: false
   }
 
   fetchingBots =()=>{
@@ -24,15 +25,19 @@ class BotsPage extends React.Component {
     })
   }
 
+ 
+
   componentDidMount(){
     this.fetchingBots()
   }
 
   handleClick = (botItem)=>{
     // console.log('click', bot)
+
    if(!this.state.bot.includes(botItem)){
     this.setState({
-      bot: [botItem, ...this.state.bot]
+      bot: [botItem, ...this.state.bot],
+      switch: !this.state.switch
     })
    }
   }
@@ -78,6 +83,7 @@ class BotsPage extends React.Component {
   }
 
   render() {
+    console.log(this.state.switch)
     // console.log(this.state.bot)
     let searchItem = this.state.bots.filter(bot =>{
       return  bot.name.toLowerCase().indexOf(this.state.searchValue.toLocaleLowerCase())
@@ -92,7 +98,8 @@ class BotsPage extends React.Component {
         <BotCollection bots={this.sort(searchItem)}
                        handleClick={this.handleClick}
                        handleSearchChange={this.handleSearchChange} 
-                       handleSortValue={this.handleSortValue}/>
+                       handleSortValue={this.handleSortValue}
+                       switch={this.state.switch}/>
          />
       </div>
     );
