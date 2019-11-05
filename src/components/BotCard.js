@@ -23,7 +23,8 @@ const BotCard = (props) => {
 
   const handleClick = (event) => {
     // if(props.bot.id === event.target.key){
-      console.log(event)
+      console.log(props.bot)
+    props.addOrDeleteBot(props.bot)
     // };
   }
 
@@ -32,7 +33,7 @@ const BotCard = (props) => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => handleClick()}
+        onClick={(event) => handleClick(event)}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
