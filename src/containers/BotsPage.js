@@ -18,12 +18,16 @@ class BotsPage extends React.Component {
     })
   }
 
+handleClick = (bot) => {
+  // console.log("this is target", e.target)
+  if (!this.state.botArmy.includes(bot)){
+  return this.addBot(bot)
+  } else {
+  return this.removeBot(bot)
+  }
+}
   addBot = (bot) => {
-    // console.log("adding to bot army" , bot) 
-    //if array in bot army includes bot, return null, else add it to the array
- 
     let botArmyArray = this.state.botArmy 
-  
     if (botArmyArray.includes(bot)){ 
       null
     } else {
@@ -34,18 +38,23 @@ class BotsPage extends React.Component {
 
   //CLICKING ON THE BOT in Army Removes the Bot, INSTEAD it loops and try to add it again
   removeBot = (bot) => {
-    // this.setState({
-    //   botArmy: [...this.state.BotArmy]
-    // })
+    let botArmy = this.state.botArmy 
+      this.setState({
+        botArmy: this.state.botArmy.filter(function(botSelect){
+          return bot !== botSelect
+        })
+      })
+      
   }
 
   render() {
     // console.log("Hi", this)
     // console.log("WHAT IS IN MY ARMY?" , this.state.botArmy)
+    console.log("array of army", this.state.botArmy)
     return (
       <div>
-        <YourBotArmy botArmy={this.state.botArmy}/>
-        <BotCollection bots={this.state.bots} addBot={this.addBot} removeBot={this.removeBot}/>
+        <YourBotArmy botArmy={this.state.botArmy} removeBot={this.removeBot} handleClick={this.handleClick}/>
+        <BotCollection bots={this.state.bots} addBot={this.addBot} handleClick={this.handleClick} />
         
         {/* put your components here */}
       </div>

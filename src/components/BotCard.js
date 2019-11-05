@@ -21,16 +21,24 @@ const BotCard = props => {
   }
 // console.log('BOT CARD', props)
 //CODE TO ADD BOT TO ARMY
-  let addBotToArmy = () => {
-    props.addBot(props.bot)
-  }
+
+
+  // let addBotToArmy = () => {
+  //   props.addBot(props.bot)
+  // }
+
+  // let removeBotFromArmy = () => {
+  //   props.removeBot(props.bot)
+  // }
+
   return (
     
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={addBotToArmy}
+        // onClick={removeBotFromArmy}
+        onClick={() => props.handleClick(bot)}
         
       >
         <div className="image">

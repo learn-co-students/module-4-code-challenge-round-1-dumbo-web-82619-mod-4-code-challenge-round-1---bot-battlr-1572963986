@@ -14,7 +14,7 @@ class YourBotArmy extends React.Component {
               // console.log("BOT CARD IN BOT ARMY" , bot)
               return <BotCard bot={bot}
                               removeBot={this.props.removeBot}
-                              
+                              handleClick={this.props.handleClick}
               />
             }
             )}
