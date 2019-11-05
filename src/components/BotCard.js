@@ -22,6 +22,7 @@ const BotCard = props => {
   const handleClick = (event) => {
     if(props.enlistMethod){
       props.enlistMethod(bot)
+      // props.enlistPage()
     } else {
       props.dischargeMethod(bot)
     }

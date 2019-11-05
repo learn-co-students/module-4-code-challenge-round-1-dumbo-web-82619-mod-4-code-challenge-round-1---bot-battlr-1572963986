@@ -16,7 +16,7 @@ class BotCollection extends React.Component {
   	  <div className="ui four column grid">
     		<div className="row">
     		  { this.filteredBots().map(bot => {
-            return <BotCard bot={ bot } enlistMethod={ this.props.enlistMethod }/>
+            return <BotCard bot={ bot } enlistMethod={ this.props.enlistMethod } enlistPage={ this.props.enlistPage }/>
           }) }
     		</div>
   	  </div>
